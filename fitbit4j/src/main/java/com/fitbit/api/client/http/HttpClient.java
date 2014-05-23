@@ -64,6 +64,7 @@ public class HttpClient implements Serializable {
     private static final int NOT_FOUND = 404;// Not Found: The URI requested is invalid or the resource requested, such as a user, does not exists.
     private static final int NOT_ACCEPTABLE = 406;// Not Acceptable: Returned by the Search API when an invalid format is specified in the request.
     public static final int CONFLICT = 409; // Conflict: Returned by the Subscription API when trying to create a new subscription with a subscription ID which already exists.
+    private static final int TOO_MANY_REQUESTS = 429; // Too Many Requests: The client has exceeded its rate limit.
     private static final int INTERNAL_SERVER_ERROR = 500;// Internal Server Error: Something is broken.  Please post to the group so the Fitbit team can investigate.
     private static final int BAD_GATEWAY = 502;// Bad Gateway: Fitbit is down or being upgraded.
     private static final int SERVICE_UNAVAILABLE = 503;// Service Unavailable: The Fitbit servers are up, but overloaded with requests. Try again later. The search and trend methods use this to indicate when you are being rate limited.
@@ -678,6 +679,9 @@ public class HttpClient implements Serializable {
                 break;
             case SERVICE_UNAVAILABLE:
                 cause = "Service Unavailable: The Fitbit servers are up, but overloaded with requests. Try again later. The search call uses this status code to indicate that you are being rate limited.";
+                break;
+            case TOO_MANY_REQUESTS:
+                cause = "Too Many Requests: Rate limit exceeded.";
                 break;
             default:
                 cause = "";
