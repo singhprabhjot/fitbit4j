@@ -61,24 +61,21 @@ public class FriendStats {
         private int steps;
         private int calories;
         private double distance;
-        private int activeScore;
 
         public StatisticInfo() {
 
         }
 
-        public StatisticInfo(int steps, int calories, double distance, int activeScore) {
+        public StatisticInfo(int steps, int calories, double distance) {
             this.steps = steps;
             this.calories = calories;
             this.distance = distance;
-            this.activeScore = activeScore;
         }
 
         public StatisticInfo(JSONObject statisticInfoJson) throws JSONException {
             this.steps = statisticInfoJson.getInt("steps");
             this.calories = statisticInfoJson.getInt("calories");
             this.distance = statisticInfoJson.getDouble("distance");
-            this.activeScore = statisticInfoJson.getInt("activeScore");
         }
 
         public int getSteps() {
@@ -105,12 +102,5 @@ public class FriendStats {
             this.distance = distance;
         }
 
-        public int getActiveScore() {
-            return activeScore;
-        }
-
-        public void setActiveScore(int activeScore) {
-            this.activeScore = activeScore;
-        }
     }
 }

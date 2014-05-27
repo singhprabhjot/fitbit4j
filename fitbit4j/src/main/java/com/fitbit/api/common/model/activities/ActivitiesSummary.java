@@ -11,7 +11,6 @@ public class ActivitiesSummary {
     private int caloriesOut;
     private int activityCalories;
     private int marginalCalories;
-    private int activeScore;
     private int steps;
     private Integer floors = null;
     private Double elevation = null;
@@ -25,7 +24,6 @@ public class ActivitiesSummary {
         caloriesOut = json.getInt("caloriesOut");
         activityCalories = json.getInt("activityCalories");
         marginalCalories = json.getInt("marginalCalories");
-        activeScore = json.getInt("activeScore");
         steps = json.getInt("steps");
         // for now its optional
         if (json.has("floors")) {
@@ -74,14 +72,6 @@ public class ActivitiesSummary {
 
     public void setMarginalCalories(int marginalCalories) {
         this.marginalCalories = marginalCalories;
-    }
-
-    public int getActiveScore() {
-        return activeScore;
-    }
-
-    public void setActiveScore(int activeScore) {
-        this.activeScore = activeScore;
     }
 
     public int getSteps() {

@@ -16,14 +16,12 @@ public class BestAchievement {
     private BestAchievementItem floors;
     private BestAchievementItem distance;
     private BestAchievementItem steps;
-    private BestAchievementItem activeScore;
 
-    public BestAchievement(BestAchievementItem caloriesOut, BestAchievementItem floors, BestAchievementItem distance, BestAchievementItem steps, BestAchievementItem activeScore) {
+    public BestAchievement(BestAchievementItem caloriesOut, BestAchievementItem floors, BestAchievementItem distance, BestAchievementItem steps) {
         this.caloriesOut = caloriesOut;
         this.floors = floors;
         this.distance = distance;
         this.steps = steps;
-        this.activeScore = activeScore;
     }
 
     public BestAchievement(JSONObject jsonObject) throws JSONException {
@@ -38,9 +36,6 @@ public class BestAchievement {
         }
         if (jsonObject.has("steps")) {
             this.steps = new BestAchievementItem(jsonObject.getJSONObject("steps").getDouble("value"), FitbitApiService.LOCAL_DATE_FORMATTER.parseDateTime(jsonObject.getJSONObject("steps").getString("date")).toLocalDate());
-        }
-        if (jsonObject.has("activeScore")) {
-            this.activeScore = new BestAchievementItem(jsonObject.getJSONObject("activeScore").getDouble("value"), FitbitApiService.LOCAL_DATE_FORMATTER.parseDateTime(jsonObject.getJSONObject("activeScore").getString("date")).toLocalDate());
         }
     }
 
@@ -60,7 +55,4 @@ public class BestAchievement {
         return steps;
     }
 
-    public BestAchievementItem getActiveScore() {
-        return activeScore;
-    }
 }

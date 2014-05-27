@@ -53,10 +53,6 @@
                     <div class="line red">${activities.summary.caloriesOut}</div>
                 </div>
                 <div class="column">
-                    <div class="line">Active Score</div>
-                    <div class="line red">${activities.summary.activeScore}</div>
-                </div>
-                <div class="column">
                     <div class="line">Steps</div>
                     <div class="line red">${activities.summary.steps}</div>
                 </div>

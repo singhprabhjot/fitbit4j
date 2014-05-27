@@ -15,14 +15,12 @@ public class Achievement {
     private long floors;
     private double distance;
     private long steps;
-    private long activeScore;
 
-    public Achievement(long caloriesOut, long floors, double distance, long steps, long activeScore) {
+    public Achievement(long caloriesOut, long floors, double distance, long steps) {
         this.caloriesOut = caloriesOut;
         this.floors = floors;
         this.distance = distance;
         this.steps = steps;
-        this.activeScore = activeScore;
     }
 
     public Achievement(JSONObject jsonObject) throws JSONException {
@@ -30,7 +28,6 @@ public class Achievement {
         this.floors = jsonObject.optLong("floors");
         this.distance = jsonObject.getDouble("distance");
         this.steps = jsonObject.getLong("steps");
-        this.activeScore = jsonObject.getLong("activeScore");
     }
 
     public long getCaloriesOut() {
@@ -49,7 +46,4 @@ public class Achievement {
         return steps;
     }
 
-    public long getActiveScore() {
-        return activeScore;
-    }
 }

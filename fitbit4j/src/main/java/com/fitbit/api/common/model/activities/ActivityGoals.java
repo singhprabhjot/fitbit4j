@@ -9,7 +9,7 @@ public class ActivityGoals {
     private Integer caloriesOut;
     private Integer steps;
     private Double distance;
-    private Integer activeScore;
+    private Integer activeMinutes;
     private Integer floors;
 
     public ActivityGoals() {
@@ -25,8 +25,8 @@ public class ActivityGoals {
         if (StringUtils.isNotBlank(json.optString("distance"))) {
             distance = json.getDouble("distance");
         }
-        if (StringUtils.isNotBlank(json.optString("activeScore"))) {
-            activeScore = json.getInt("activeScore");
+        if (StringUtils.isNotBlank(json.optString("activeMinutes"))) {
+            activeMinutes = json.getInt("activeMinutes");
         }
         if (StringUtils.isNotBlank(json.optString("floors"))) {
             floors = json.getInt("floors");
@@ -45,8 +45,8 @@ public class ActivityGoals {
         return distance;
     }
 
-    public Integer getActiveScore() {
-        return activeScore;
+    public Integer getActiveMinutes() {
+        return activeMinutes;
     }
 
     public Integer getFloors() {
@@ -54,6 +54,6 @@ public class ActivityGoals {
     }
 
     public boolean hasAnyValue() {
-        return caloriesOut != null || steps != null || distance != null || activeScore != null || floors != null;
+        return caloriesOut != null || steps != null || distance != null || activeMinutes != null || floors != null;
     }
 }
