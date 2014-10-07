@@ -1,4 +1,4 @@
-fitbitSiteBaseUrl=http://www.fitbit.com
+fitbitSiteBaseUrl=https://www.fitbit.com
 apiBaseUrl=api.fitbit.com
 exampleBaseUrl=http://your.application.host/path/
 

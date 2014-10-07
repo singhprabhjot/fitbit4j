@@ -51,7 +51,7 @@ public class Configuration {
         defaultProperty.setProperty("fitbitAPIClient.http.userAgent", "fitbitAPIClient http://wiki.fitbit.com/Fitbit-API-Java-Client /1");
         //defaultProperty.setProperty("fitbitAPIClient.user","");
         //defaultProperty.setProperty("fitbitAPIClient.password","");
-        defaultProperty.setProperty("fitbitAPIClient.http.useSSL", "false");
+        defaultProperty.setProperty("fitbitAPIClient.http.useSSL", "true");
         //defaultProperty.setProperty("fitbitAPIClient.http.proxyHost","");
         defaultProperty.setProperty("fitbitAPIClient.http.proxyHost.fallback", "http.proxyHost");
         //defaultProperty.setProperty("fitbitAPIClient.http.proxyUser","");
@@ -110,11 +110,12 @@ public class Configuration {
     }
 
     public static boolean useSSL() {
-        return getBoolean("fitbitAPIClient.http.useSSL");
+        return true;
     }
 
+    // Defaulting to always use SSL
     public static String getScheme() {
-        return useSSL() ? "https://" : "http://";
+        return "https://";
     }
 
     public static String getCilentVersion() {
