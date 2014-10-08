@@ -2356,6 +2356,7 @@ public class FitbitApiClientAgent extends FitbitAPIClientSupport implements Seri
      * @throws FitbitAPIException Fitbit API Exception
      */
     public ApiRateLimitStatus getClientRateLimitStatus() throws FitbitAPIException {
+        clearAccessToken();
         return getRateLimitStatus(ApiQuotaType.CLIENT);
     }
 
