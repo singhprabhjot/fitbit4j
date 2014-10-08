@@ -42,7 +42,7 @@ public class FitbitApiClientAgent extends FitbitAPIClientSupport implements Seri
     private static final FitbitApiCredentialsCache DEFAULT_CREDENTIALS_CACHE = new FitbitApiCredentialsCacheMapImpl();
 
     private static final String DEFAULT_API_BASE_URL = "api.fitbit.com";
-    private static final String DEFAULT_WEB_BASE_URL = "http://www.fitbit.com";
+    private static final String DEFAULT_WEB_BASE_URL = "https://www.fitbit.com";
     private static final long serialVersionUID = -1486360080128882436L;
     protected static final String SUBSCRIBER_ID_HEADER_NAME = "X-Fitbit-Subscriber-Id";
 
@@ -64,7 +64,7 @@ public class FitbitApiClientAgent extends FitbitAPIClientSupport implements Seri
      * Creates FitbitApiClientAgent with custom API hosts and credentials cache.
      *
      * @param apiBaseUrl e.g. api.fitbit.com
-     * @param webBaseUrl e.g. http://www.fitbit.com
+     * @param webBaseUrl e.g. https://www.fitbit.com
      * @param credentialsCache Credentials cache
      *
      * @see <a href="http://wiki.fitbit.com/display/API/API-Client-Reference-App">Fitbit API: API-Client-Reference-App</a>
@@ -81,7 +81,7 @@ public class FitbitApiClientAgent extends FitbitAPIClientSupport implements Seri
 
     /**
      * @param requestTokenURL e.g. https://api.fitbit.com/oauth/request_token
-     * @param authorizationURL e.g. http://www.fitbit.com/oauth/authorize
+     * @param authorizationURL e.g. https://www.fitbit.com/oauth/authorize
      * @param accessTokenURL https://api.fitbit.com/oauth/access_token
      *
      * @see <a href="http://wiki.fitbit.com/display/API/API-Client-Reference-App">Fitbit API: API-Client-Reference-App</a>
@@ -104,7 +104,7 @@ public class FitbitApiClientAgent extends FitbitAPIClientSupport implements Seri
      * @return the base API URL
      */
     public String getApiBaseUrl() {
-        return "http://" + apiBaseUrl;
+        return "https://" + apiBaseUrl;
     }
 
     /**
@@ -958,7 +958,7 @@ public class FitbitApiClientAgent extends FitbitAPIClientSupport implements Seri
      */
     public List<FoodUnit> getFoodUnits() throws FitbitAPIException {
         clearAccessToken();
-        // Example: GET http://api.fitbit.com/1/foods/units.json
+        // Example: GET https://api.fitbit.com/1/foods/units.json
         String url = APIUtil.contextualizeUrl(getApiBaseUrl(), getApiVersion(), "/foods/units", APIFormat.JSON);
         Response res = httpGet(url, true);
         throwExceptionIfError(res);
@@ -2356,6 +2356,7 @@ public class FitbitApiClientAgent extends FitbitAPIClientSupport implements Seri
      * @throws FitbitAPIException Fitbit API Exception
      */
     public ApiRateLimitStatus getClientRateLimitStatus() throws FitbitAPIException {
+        clearAccessToken();
         return getRateLimitStatus(ApiQuotaType.CLIENT);
     }
 
