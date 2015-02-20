@@ -49,6 +49,7 @@ public class UserInfo {
         JSONObject userJson = wrapped ? jsonObject.getJSONObject("user") : jsonObject;
         encodedId = userJson.getString("encodedId");
         displayName = userJson.getString("displayName");
+        System.out.print(displayName);
         gender = Gender.valueOf(userJson.getString("gender"));
         dateOfBirth = FitbitApiService.getValidLocalDateOrNull(userJson.optString("dateOfBirth"));
         height = userJson.optDouble("height");

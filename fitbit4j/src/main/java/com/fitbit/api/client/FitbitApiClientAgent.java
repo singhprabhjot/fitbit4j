@@ -3,7 +3,7 @@ package com.fitbit.api.client;
 import com.fitbit.api.APIUtil;
 import com.fitbit.api.FitbitAPIException;
 import com.fitbit.api.client.http.*;
-import com.fitbit.api.common.model.LeaderBoard.Friends;
+import com.fitbit.api.common.model.leaderboard.Friends;
 import com.fitbit.api.common.model.achievement.Achievements;
 import com.fitbit.api.common.model.achievement.LifetimeAchievements;
 import com.fitbit.api.common.model.activities.*;

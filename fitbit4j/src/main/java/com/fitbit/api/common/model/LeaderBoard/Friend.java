@@ -1,5 +1,6 @@
-package com.fitbit.api.common.model.LeaderBoard;
+package com.fitbit.api.common.model.leaderboard;
 
+import com.fitbit.api.common.model.user.UserInfo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,6 +11,11 @@ import org.json.JSONObject;
 public class Friend {
 
     private String lastUpdateTime;
+    private Average average;
+    private Lifetime lifetime;
+    private Summary summary;
+    private UserInfo userInfo;
+    private Rank rank;
 
     public String getLastUpdateTime() {
         return lastUpdateTime;
@@ -24,8 +30,6 @@ public class Friend {
     }
     public Friend(String lastUpdateTime) {
         this.lastUpdateTime=lastUpdateTime;
-        System.out.print("wooohoooooo0000000oooooooooooooooo"+this.lastUpdateTime);
-
     }
 
     public Friend(JSONObject json) throws JSONException {
@@ -33,9 +37,11 @@ public class Friend {
     }
 
     public Friend(JSONObject jsonObject, boolean wrapped) throws JSONException {
-        System.out.print("1=== wooohooooooooooooooooooooo"+this.lastUpdateTime);
         this.lastUpdateTime = jsonObject.getString("lastUpdateTime");
-        System.out.print("2 === wooohoooooo0000000oooooooooooooooo"+this.lastUpdateTime);
-
+        this.summary=new Summary(jsonObject.getJSONObject("summary"));
+        this.rank = new Rank(jsonObject.getJSONObject("rank"));
+        this.average=new Average(jsonObject.getJSONObject("average"));
+        this.lifetime=new Lifetime(jsonObject.getJSONObject("lifetime"));
+        this.userInfo=new UserInfo(jsonObject);
     }
 }

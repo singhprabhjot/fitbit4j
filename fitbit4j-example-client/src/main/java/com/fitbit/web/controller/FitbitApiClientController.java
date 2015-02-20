@@ -7,7 +7,7 @@ import com.fitbit.api.client.http.PostParameter;
 import com.fitbit.api.client.service.FitbitAPIClientService;
 import com.fitbit.api.common.model.activities.Activities;
 import com.fitbit.api.common.model.foods.*;
-import com.fitbit.api.common.model.LeaderBoard.*;
+import com.fitbit.api.common.model.leaderboard.*;
 import com.fitbit.api.common.model.sleep.Sleep;
 import com.fitbit.api.common.model.sleep.SleepLog;
 import com.fitbit.api.common.model.units.UnitSystem;
