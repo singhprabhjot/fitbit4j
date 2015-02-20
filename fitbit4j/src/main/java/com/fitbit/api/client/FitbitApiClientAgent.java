@@ -3,6 +3,7 @@ package com.fitbit.api.client;
 import com.fitbit.api.APIUtil;
 import com.fitbit.api.FitbitAPIException;
 import com.fitbit.api.client.http.*;
+import com.fitbit.api.common.model.LeaderBoard.Friends;
 import com.fitbit.api.common.model.achievement.Achievements;
 import com.fitbit.api.common.model.achievement.LifetimeAchievements;
 import com.fitbit.api.common.model.activities.*;
@@ -2250,6 +2251,18 @@ public class FitbitApiClientAgent extends FitbitAPIClientSupport implements Seri
         httpDelete(url, true);
     }
 
+    public Friends getLeaderBoard(LocalUserDetail localUser, FitbitUser fitbitUser, LocalDate date) throws FitbitAPIException {
+        setAccessToken(localUser);
+        // Example: GET /1/user/228TQ4/foods/log/water/date/2010-02-25.json
+        String url = APIUtil.contextualizeUrl(getApiBaseUrl(), getApiVersion(), "/user/" + fitbitUser.getId() + "/friends/leaderboard", APIFormat.JSON);
+        Response res = httpGet(url, true);
+        throwExceptionIfError(res);
+        try {
+            return new Friends(res.asJSONObject());
+        } catch (JSONException e) {
+            throw new FitbitAPIException("Error retrieving water: " + e, e);
+        }
+    }
     /**
      * Get a list of user's friends
      *

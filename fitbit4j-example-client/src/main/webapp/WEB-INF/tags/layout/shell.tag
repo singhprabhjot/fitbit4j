@@ -59,6 +59,7 @@
                     <p><a href="${exampleBaseUrl}/sleep">Sleep</a></p>
 
                     <p><a href="${exampleBaseUrl}/water">Water</a></p>
+                    <p><a href="${exampleBaseUrl}/dashboard">Dashboard</a></p>
             <c:choose>
                 <c:when test="${!isSubscribed}">
                     <p><a href="${exampleBaseUrl}/subscribe">Subscribe this application to your activity and food

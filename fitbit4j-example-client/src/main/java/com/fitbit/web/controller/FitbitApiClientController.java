@@ -7,6 +7,7 @@ import com.fitbit.api.client.http.PostParameter;
 import com.fitbit.api.client.service.FitbitAPIClientService;
 import com.fitbit.api.common.model.activities.Activities;
 import com.fitbit.api.common.model.foods.*;
+import com.fitbit.api.common.model.LeaderBoard.*;
 import com.fitbit.api.common.model.sleep.Sleep;
 import com.fitbit.api.common.model.sleep.SleepLog;
 import com.fitbit.api.common.model.units.UnitSystem;
@@ -151,7 +152,6 @@ public class FitbitApiClientController implements InitializingBean {
 
         return "subscriptions";
     }
-
     @RequestMapping("/subscribe")
     public String showSubscribe(HttpServletRequest request, HttpServletResponse response) {
         RequestContext context = new RequestContext();
@@ -380,6 +380,33 @@ public class FitbitApiClientController implements InitializingBean {
         }
 
         return "redirect:/app/water";
+    }
+    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+    public String showDashboard(HttpServletRequest request, HttpServletResponse response) {
+        RequestContext context = new RequestContext();
+        populate(context, request, response);
+
+        if (!isAuthorized(context, request)) {
+            showAuthorize(request, response);
+        }
+
+        List<String> messages = new ArrayList<String>();
+        try {
+            Friends friendList = context.getApiClientService().getClient().getLeaderBoard(context.getOurUser(), FitbitUser.CURRENT_AUTHORIZED_USER, context.getParsedLocalDate());
+            request.setAttribute("friends", friendList);
+        } catch (FitbitAPIException e) {
+            if (e.getApiErrors() != null) {
+                for (FitbitApiError error : e.getApiErrors()) {
+                    messages.add(error.getMessage());
+                }
+            } else {
+                messages.add(e.getMessage());
+            }
+            log.error("Error during logging friends.", e);
+        }
+        request.setAttribute("messages", messages);
+
+        return "dashboard";
     }
 
     @RequestMapping(value = "/createFoodForm", method = RequestMethod.GET)

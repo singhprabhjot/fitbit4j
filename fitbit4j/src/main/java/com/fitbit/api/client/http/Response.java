@@ -152,7 +152,7 @@ public class Response {
                     responseAsString = unescape(responseAsString);
                 }
                 log.debug("Response string: " + responseAsString);
-                stream.close();
+                    stream.close();
                 disconnect();
                 streamConsumed = true;
             } catch (NullPointerException npe) {

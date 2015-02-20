@@ -2,6 +2,8 @@
 *.iml
 *.ipr
 *.iws
+*.DS
+*config.properties*
 target/
 
 /release.properties
