@@ -11,6 +11,27 @@ import org.json.JSONObject;
 public class Friend {
 
     private String lastUpdateTime;
+
+    public Average getAverage() {
+        return average;
+    }
+
+    public Lifetime getLifetime() {
+        return lifetime;
+    }
+
+    public Summary getSummary() {
+        return summary;
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public Rank getRank() {
+        return rank;
+    }
+
     private Average average;
     private Lifetime lifetime;
     private Summary summary;

@@ -393,7 +393,7 @@ public class FitbitApiClientController implements InitializingBean {
         List<String> messages = new ArrayList<String>();
         try {
             Friends friendList = context.getApiClientService().getClient().getLeaderBoard(context.getOurUser(), FitbitUser.CURRENT_AUTHORIZED_USER, context.getParsedLocalDate());
-            request.setAttribute("friends", friendList);
+            request.setAttribute("Friends", friendList);
         } catch (FitbitAPIException e) {
             if (e.getApiErrors() != null) {
                 for (FitbitApiError error : e.getApiErrors()) {

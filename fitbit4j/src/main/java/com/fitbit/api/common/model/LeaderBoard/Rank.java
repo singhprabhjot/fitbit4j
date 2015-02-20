@@ -8,7 +8,11 @@ import org.json.JSONObject;
  */
 public class Rank {
     private Steps steps;
-    
+
+    public Steps getSteps() {
+        return steps;
+    }
+
     public Rank(JSONObject jsonObject) throws JSONException {
         Steps step = new Steps(jsonObject);
         this.steps =step;

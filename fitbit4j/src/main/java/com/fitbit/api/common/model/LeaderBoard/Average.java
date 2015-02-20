@@ -6,6 +6,7 @@ import org.json.JSONObject;
 /**
  * Created by prabhjot.singh on 2/19/15.
  */
+
 public class Average {
     private Steps steps;
 
@@ -13,5 +14,9 @@ public class Average {
         Steps step = new Steps(jsonObject);
         this.steps =step;
 
+    }
+
+    public Steps getSteps() {
+        return steps;
     }
 }
